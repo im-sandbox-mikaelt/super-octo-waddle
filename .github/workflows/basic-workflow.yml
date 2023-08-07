@@ -44,7 +44,8 @@ jobs:
 
   deployment:
     runs-on: ubuntu-latest
-    environment: DEV
+    environment: production
+    needs: [build]
     steps:
       - run: echo Hello, from the deployment!!
         # ...deployment-specific steps
