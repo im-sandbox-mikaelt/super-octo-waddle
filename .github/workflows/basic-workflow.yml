@@ -6,7 +6,7 @@ name: CI Demo
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches-ignore: [ "main" ]
+    branches: [ "main" ]
     
   pull_request:
     branches: [ "main" ]
@@ -35,3 +35,8 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+
+      # Run only for a PR
+      - name: Run only if a PR
+        if: ${{ github.event_name == 'pull_request' }}
+        run: echo Hello, from the Pull Request!
