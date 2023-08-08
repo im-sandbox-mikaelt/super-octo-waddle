@@ -41,11 +41,12 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         run: echo Hello, from the Pull Request!
 
+      - uses: actions/checkout@v3
+        with:
+          repository: 'im-sandbox-mikaelt/hello-msk-composite-action'
+          path: ./.github/actions/hello-msk-composite-action
 
-  deployment:
-    runs-on: ubuntu-latest
-    environment: production
-    needs: [build]
-    steps:
-      - run: echo Hello, from the deployment!!
-        # ...deployment-specific steps
+      - name: Run a composite action
+        uses: ./.github/actions/hello-msk-composite-action
+        with:
+          who-to-greet: 'Mona the Octocat with MSK'
