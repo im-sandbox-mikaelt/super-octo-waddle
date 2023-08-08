@@ -45,6 +45,7 @@ jobs:
         with:
           repository: 'im-sandbox-mikaelt/hello-msk-composite-action'
           path: ./.github/actions/hello-msk-composite-action
+          token: ${{ secrets.GH_TOKEN }}
 
       - name: Run a composite action
         uses: ./.github/actions/hello-msk-composite-action
